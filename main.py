@@ -49,7 +49,7 @@ def open_chrome():
 #     current_file_name=+1
 #     current_status = 'screenshot_done'
 #     os.chdir("..")
-#     main_manager()
+#     main_manager()  
     
     
 
@@ -57,24 +57,26 @@ def check_image():
     global current_status
     directory  = 'resource'
     # os.chdir(directory)
-    print(f'current directory is : {directory}')
     image_extensions = "*.png"
     image_files  = []
     for ext in image_extensions:
         image_files.extend(glob.glob(os.path.join(directory , ext)))
-    
+    keyboard.press_and_release('space')
     for image in image_files:
-        keyboard.press_and_release('space')
-        try:
-            coordinates  = pyautogui.locateOnScreen(image=image)
+        # keyboard.press_and_release('space')
+        try:   
+            coordinates  = pyautogui.locateOnScreen(image)
             print(coordinates)
+            keyboard.press_and_release('space')
+        except Exception as check_error:
+            print(check_error)
+        try:
             print(os.path.basename(image))
-        except Exception as error:
+        except Exception as error: 
             print(error)
-            check_image()
     # current_status = 'image_done'   
     # current_dir  =os.chdir("..")
-    # print(current_dir)
+    # print(current_dir)            
     # main_manager()
     time.sleep(sleep)
     # print("done hai")
