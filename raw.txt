@@ -1,2 +1,333 @@
 chrome://dino/
 
+Runner.instance_.gameOver = () => {}
+
+
+This can be used in JS
+
+
+
+# import pyautogui # pip install pyautogui
+# from PIL import Image, ImageGrab # pip install pillow
+# # from numpy import asarray
+# import time
+
+# def click(key):
+#     pyautogui.keyDown(key)
+#     return
+
+# def isCollision(data):
+# # Check colison for birds
+#     for i in range(530,560):
+#         for j in range(80, 127):
+#             if data[i, j] < 171:
+#                 click("down")
+#                 return
+#  # Check colison for cactus
+#     for i in range(530, 620):
+#         for j in range(130, 160):
+#             if data[i, j] < 100:
+#                 click("up")
+#                 return
+#     return
+
+# if __name__ == "__main__":
+#     time.sleep(5)
+#     click('up') 
+    
+#     while True:
+#         image = ImageGrab.grab().convert('L')  
+#         data = image.load()
+#         isCollision(data)
+        
+#         # # Draw the rectangle for cactus
+#         # for i in range(530, 610):
+#         #     for j in range(130, 160):
+#         #          data[i, j] = 0
+        
+#         # # # Draw the rectangle for birds
+#         # for i in range(530, 560):
+#         #     for j in range(100, 125):
+#         #         data[i, j] = 171
+
+#         # image.show()
+#         # break
+      
+      
+import pyautogui
+
+
+
+
+
+pyautogui.displayMousePosition() 
+
+
+
+
+import os
+import glob
+import time
+import keyboard
+import pyautogui
+
+pyautogui.FAILSAFE = True
+
+current_status = ''
+sleep = 1
+current_file_name  = 0
+
+
+
+def open_chrome():
+    global current_status
+    keyboard.press_and_release('win')
+    time.sleep(sleep)
+    keyboard.write('chrome')
+    time.sleep(sleep)
+    keyboard.press_and_release('enter')
+    time.sleep(sleep)
+    keyboard.write('chrome://dino/')
+    time.sleep(sleep)
+    keyboard.press('enter')
+    # directory_name  = 'images_screenshot'
+    # try:
+    #     if os.mkdir(directory_name):
+    #         os.mkdir('images_screenshot')
+    #     else:
+    #         print('Directory already done')
+    # except Exception as directory_error:
+    #     print(directory_error)
+    # current_status = "directory_done"
+    # print(current_status)
+    # main_manager()
+    check_image()
+    
+
+
+# def screenshot():
+#     global current_status
+#     global current_file_name
+#     # current_dir  = os.getcwd()
+#     current_dir  = 'images_screenshot'
+#     os.chdir(current_dir)
+#     print(f'current directory is : {current_dir}')
+#     pyautogui.screenshot(str(current_file_name)+ '.png')
+#     current_file_name=+1
+#     current_status = 'screenshot_done'
+#     os.chdir("..")
+#     main_manager()  
+    
+    
+
+def check_image():
+    global current_status
+    directory  = 'resource'
+    # os.chdir(directory)
+    image_extensions = "*.png"
+    image_files  = []
+    for ext in image_extensions:
+        image_files.extend(glob.glob(os.path.join(directory , ext)))
+    keyboard.press_and_release('space')
+    for image in image_files:
+        # keyboard.press_and_release('space')
+        try:   
+            coordinates  = pyautogui.locateOnScreen(image)
+            print(coordinates)
+            keyboard.press_and_release('space')
+        except Exception as check_error:
+            print(check_error)
+        try:
+            print(os.path.basename(image))
+        except Exception as error: 
+            print(error)
+    # current_status = 'image_done'   
+    # current_dir  =os.chdir("..")
+    # print(current_dir)            
+    # main_manager()
+    time.sleep(sleep)
+    # print("done hai")
+    check_image()
+    
+    
+
+
+# def main_manager():
+#     pass
+
+# def main_manager():
+#     global current_status
+#     if current_status == 'chrome_done':
+#         make_dir()
+#     elif current_status == 'directory_done':
+#         time.sleep(sleep)
+#         check_image()
+#     elif current_status == 'image_done':
+#         time.sleep(sleep)
+#         screenshot()
+#     elif current_status == 'screenshot_done':
+#         time.sleep(sleep)
+#         check_image()
+    
+        
+
+
+if __name__ == '__main__':
+    open_chrome()
+
+
+
+
+# import pyautogui
+# import time
+# import keyboard
+# import csv
+# import time
+
+
+# # while True:
+    
+# #     im = pyautogui.screenshot()
+    
+    
+    
+    
+# #         if keyboard.is_pressed('s'):
+# #             break
+
+# def save_csv(element):
+#     with open ('pixel.csv' , mode='a' , newline='') as file:
+#         csv_writer = csv.writer(file)
+#         csv_writer.writerow([element])
+    
+#     x , y = pyautogui.mouseInfo()
+#     save_csv(pyautogui.pixel(x , y))
+
+    
+
+
+# # pyautogui.displayMousePosition()
+
+# # while True:
+# #     print('name')
+    
+# #     current_data  = (pyautogui.displayMousePosition())
+# #     save_csv(current_data)
+    
+   
+# #     # pass
+
+
+
+
+# save_csv(pyautogui.displayMousePosition())
+
+
+import pyautogui
+import time
+import keyboard
+
+
+
+while True:
+    
+    im = pyautogui.screenshot()
+    screen = im.getpixel((214, 189))
+    
+    x1 = im.getpixel((373, 670))
+    x2 = im.getpixel((440, 661))
+    x3 = im.getpixel((439, 529))
+    x4 = im.getpixel((214, 189))
+    
+    y1 = im.getpixel((214, 189))
+    y2 = im.getpixel((214, 189))
+    y3 = im.getpixel((214, 189))
+    y4 = im.getpixel((214, 189))
+    
+    if screen[0] == 255:
+        if x1[0] != 255 or x2[0] != 255 or x3[0] != 255:
+            keyboard.press_and_release('space')
+               
+    
+    
+
+
+
+import pyautogui
+import time
+import keyboard
+
+import os
+import glob
+
+pyautogui.FAILSAFE = True
+
+
+current_file_name = 0
+
+
+def open_chrome():
+    keyboard.press_and_release('win')
+    time.sleep(1)
+    keyboard.write('chrome')
+    time.sleep(1)
+    keyboard.press_and_release('enter')
+    time.sleep(1)
+    keyboard.write('chrome://dino/')
+    time.sleep(1)
+    keyboard.press_and_release('enter')
+    time.sleep(1)
+    keyboard.press('space')
+    current_time  = 1
+    
+    # for i in range(100):
+    #     time.sleep(current_time)
+    #     if current_time <= 0:
+    #         current_time==1
+    #     else:
+    #         current_time-=.1
+        
+    #     keyboard.press_and_release('space')
+    
+    # print(pyautogui.position())
+    make_dir()
+    save_image()
+
+
+def make_dir():
+    directory_name  = 'images_screenshot'
+    try:    
+        if os.mkdir('images_screenshot'):
+            os.mkdir('images_screenshot')
+        else:
+            print("I am already available")
+    except Exception as drive_error:
+        print(drive_error)
+    os.chdir(directory_name)
+    print(os.getcwd())
+
+def save_image():
+    global current_file_name
+    pyautogui.screenshot(str(current_file_name) + '.png')
+    current_file_name=+1
+    check_image()
+    save_image()
+    
+def check_image():
+    directory  = 'resource'
+    print(directory)
+    image_extension  = "*.png"
+    image_files = []
+    for ext in image_extension:
+        image_files.extend(glob.glob(os.path.join(directory, ext)))
+    
+    for image in image_files:
+        print(os.path.basename(image))
+    
+
+
+if __name__ == '__main__':
+    check_image()
+    
+
+
