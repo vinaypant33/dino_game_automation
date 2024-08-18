@@ -31,52 +31,46 @@ def play_game():
     time.sleep(1)
     keyboard.press('space')
     # keyboard.press_and_release('chrome://dino/')
-    # pyautogui.displayMousePosition()
+    # pyautogui.displayMousePosition()    
     
     while True:
-        im = pyautogui.screenshot()
+        im = pyautogui.screenshot()    
         # screen = im.getpixel((214 , 189))
-        x1 = im.getpixel((434 , 661))
-        x2 = im.getpixel((432 , 554))
-        x3 = im.getpixel((450 , 584))
-        x4 = im.getpixel((436 , 540))
+        x1 = im.getpixel((373 , 678))
+        x2 = im.getpixel((435 , 678))
+        x3 = im.getpixel((437 , 707))
+        x4 = im.getpixel((441 , 651))
+        x5 = im.getpixel((445 , 550))
+        x6 = im.getpixel((446 , 530))
+        x7 = im.getpixel((446 , 504))
+    
         
         # print(x1[0] , x1)
         if x1[0] != 255:
+            # keyboard.press('space')
+            # keyboard.release('space')
             keyboard.press_and_release('space')
         if x2[0] != 255:
             keyboard.press_and_release('space')
         if x3[0] != 255:
             keyboard.press_and_release('space')
         if x4[0] != 255:
+            keyboard.press_and_release('space')
+        if x5[0] != 255:
             keyboard.press_and_release('down')
+        if x6[0] != 255:
+            keyboard.press_and_release('down')
+        if x7[0] != 255:
+            keyboard.press_and_release('down')
+       
+                
         if keyboard.is_pressed('ctrl+q'):
+            print('Game Closed')
             break
         
-    
-def keep_playing():
-    im = pyautogui.screenshot()
-    # screen = im.getpixel((214 , 189))
-    x1 = im.getpixel((434 , 661))
-    x2 = im.getpixel((432 , 554))
-    x3 = im.getpixel((450 , 584))
-    x4 = im.getpixel((436 , 540))
-    
-    # print(x1[0] , x1)
-    if x1[0] != 255:
-        keyboard.press_and_release('space')
-    if x2[0] != 255:
-        keyboard.press_and_release('space')
-    if x3[0] != 255:
-        keyboard.press_and_release('space')
-    if x4[0] != 255:
-        keyboard.press_and_release('down')
-    keep_playing()
-    
-    
+
 
 
 if __name__ =="__main__":
     main_manager()
     play_game()
-    # keep_playing()
